@@ -1,0 +1,9 @@
+1. Top-level container itu wadah paling luar, yaitu jendela yang menampung semua komponen lain, contohnya JFrame. Intermediate container itu wadah di dalam jendela untuk mengelompokkan komponen, contohnya JScrollPane yang membungkus Text Area. Atomic component itu komponen yang langsung dipakai pengguna dan tidak menampung komponen lain, contohnya JButton.
+
+2. Supaya radio button yang satu grup hanya bisa dipilih satu. Kalau Perempuan dipilih, Laki-laki otomatis terlepas. Kalau tidak satu grup, dua-duanya bisa terpilih sekaligus.
+
+3. Saya pilih JComboBox kalau pilihannya banyak, misalnya daftar kota, karena daftarnya bisa disembunyikan dan hemat tempat. Kalau pilihannya cuma sedikit, seperti kelas tiket, saya pakai JRadioButton supaya semua pilihan langsung kelihatan.
+
+4. Kode itu dibuat otomatis oleh NetBeans dari tab Design, jadi kalau diedit langsung akan tertimpa saat form diubah lagi. Kode tambahan ditulis di luar bagian itu, yaitu di konstruktor setelah initComponents(), di dalam event handler, atau di method bantu sendiri.
+
+5. Karena tema diterapkan saat komponen dibuat. Kalau setup() dipanggil setelah form jadi, komponen yang sudah ada tetap memakai tema lama. Jadi tema dipasang dulu di main, baru form dibuat dan ditampilkan.
