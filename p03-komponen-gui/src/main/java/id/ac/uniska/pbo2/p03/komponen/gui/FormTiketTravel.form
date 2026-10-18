@@ -183,6 +183,9 @@
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Ekonomi"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ekonomiRadioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="bisnisRadio">
       <Properties>
@@ -191,6 +194,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Bisnis"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bisnisRadioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="eksekutifRadio">
       <Properties>

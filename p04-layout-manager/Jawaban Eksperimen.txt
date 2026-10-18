@@ -1,0 +1,44 @@
+Jawaban Eksperimen
+
+1. Alignment flowPanel diubah menjadi Center
+   Tombol yang tadinya rata kiri menjadi terpusat di tengah panel. Saat jendela
+   dikecilkan, tombol yang tidak muat turun ke baris berikutnya, dan setiap baris
+   tetap terpusat. Baris di initComponents() yang ikut berubah adalah
+   flowPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 8, 8));
+   (sebelumnya FlowLayout.LEFT).
+
+2. Rows 0 dan Columns 2 pada gridPanel
+   Terbentuk 5 baris: empat baris berisi dua tombol dan baris terakhir hanya berisi
+   tombol 9. Kalau Rows bernilai 0, GridLayout menghitung jumlah baris sendiri dari
+   jumlah komponen dan kolom, yaitu 9 komponen dibagi 2 kolom dan dibulatkan ke atas
+   menjadi 5.
+
+3. maximumSize tombol di boxPanel diisi lebar 32767 dan tinggi sama dengan tombol
+   Sebelumnya lebar setiap tombol mengikuti panjang tulisannya sehingga berbeda-beda.
+   Setelah diubah, semua tombol melebar selebar panel dan ikut berubah saat jendela
+   diubah ukurannya, karena BoxLayout memakai ukuran maksimum untuk menentukan batas
+   pelebaran komponen. Tinggi dibuat sama dengan tinggi tombol agar tombol tidak ikut
+   memanjang ke bawah. Vertical Strut menambah jarak kosong tetap di antara tombol
+   sehingga tombol tidak lagi menempel satu sama lain.
+
+Praktikum 4 (FormBiodata)
+
+1. Weight X namaField diubah menjadi 0.0
+   Lebar isian tidak berubah secara terlihat saat jendela dilebarkan. Pelebaran kolom
+   di GridBagLayout ditentukan oleh Weight X terbesar di kolom itu, dan isian lain
+   (NPM, Email, dan seterusnya) masih memakai 1.0. Karena Fill-nya Horizontal,
+   namaField tetap memenuhi selnya. Isian baru berhenti melebar kalau Weight X
+   semua isian di kolom itu menjadi 0.0.
+
+2. Direction formPanel di dalam isiPanel diubah dari North menjadi Center
+   Saat North, baris form tetap berada di atas dan sisa tinggi kosong ada di bawah.
+   Saat Center, formPanel direntangkan mengisi seluruh tinggi, dan karena semua
+   baris tidak punya Weight Y, baris-barisnya berkumpul di tengah secara vertikal
+   dengan ruang kosong di atas dan di bawah. Itu alasan `formPanel` dibungkus
+   `isiPanel` dan diletakkan di North.
+
+3. Baris setMinimumSize(getSize()) dihapus, lalu jendela dikecilkan sekecil mungkin
+   Bagian yang rusak lebih dulu adalah (tulis hasil pengamatan Anda, misalnya
+   tombol Batal dan Simpan terpotong atau label tertutup). Baris `setMinimumSize`
+   berfungsi mencegah jendela dikecilkan melebihi ukuran awalnya sehingga tampilan
+   tidak rusak.

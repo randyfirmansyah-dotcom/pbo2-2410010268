@@ -78,9 +78,11 @@ public class FormTiketTravel extends javax.swing.JFrame {
         kelasGroup.add(ekonomiRadio);
         ekonomiRadio.setSelected(true);
         ekonomiRadio.setText("Ekonomi");
+        ekonomiRadio.addActionListener(this::ekonomiRadioActionPerformed);
 
         kelasGroup.add(bisnisRadio);
         bisnisRadio.setText("Bisnis");
+        bisnisRadio.addActionListener(this::bisnisRadioActionPerformed);
 
         kelasGroup.add(eksekutifRadio);
         eksekutifRadio.setText("Eksekutif");
@@ -190,6 +192,14 @@ public class FormTiketTravel extends javax.swing.JFrame {
     private void pesanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesanButtonActionPerformed
         tampilkanRingkasan();  
     }//GEN-LAST:event_pesanButtonActionPerformed
+
+    private void ekonomiRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ekonomiRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ekonomiRadioActionPerformed
+
+    private void bisnisRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bisnisRadioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bisnisRadioActionPerformed
 
     private void tampilkanRingkasan() {
         String kelas = ekonomiRadio.isSelected() ? "Ekonomi"
