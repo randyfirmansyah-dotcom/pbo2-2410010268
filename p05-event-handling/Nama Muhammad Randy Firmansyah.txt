@@ -1,0 +1,137 @@
+Nama: Muhammad Randy Firmansyah
+NPM: 2410010268
+
+------------------------------------------------------------------------
+
+## 1. Peta Event Form Anggota Perpustakaan
+
+| Komponen | Menu Events | Event | Aksi |
+|---|---|---|---|
+| Kotak centang persetujuan (`setujuCheckBox`) | Item | `itemStateChanged` | Tombol Daftar hanya aktif jika kotak dicentang. |
+| Tombol Batal (`batalButton`) | Action | `actionPerformed` | Mengosongkan seluruh isian, mengembalikan pilihan awal, mereset label digit, dan mengembalikan fokus ke NPM. |
+| Tombol Daftar (`daftarButton`) | Action | `actionPerformed` | Menampilkan ringkasan data anggota menggunakan `JOptionPane`. |
+| Isian NPM (`npmField`) | Key | `keyReleased` | Memperbarui label jumlah digit NPM (`npmDigitLabel`), misalnya "8 dari 10 digit". |
+| Form JFrame | Window | `windowClosing` | Meminta konfirmasi sebelum aplikasi ditutup. |
+
+**Pengaturan form:** `defaultCloseOperation` diatur ke
+`DO_NOTHING_ON_CLOSE`, dan tombol Daftar dibuat tidak aktif (`enabled`
+tidak dicentang) saat form pertama kali dibuka.
+
+------------------------------------------------------------------------
+
+## 2. Tabel Pengamatan Praktikum 2: Mengamati Event
+
+| No | Tindakan | Event yang tercatat |
+|---|---|---|
+| 1 | Arahkan kursor ke tombol, lalu jauhkan. | `MouseEvent`: kursor masuk ke tombol (`mouseEntered`), lalu kursor keluar dari tombol (`mouseExited`). |
+| 2 | Klik tombol "Klik saya". | `MouseEvent` kursor masuk ke tombol (jika kursor baru datang), lalu `ActionEvent`: tombol diklik (`actionPerformed`). Saat kursor dijauhkan muncul `MouseEvent` kursor keluar. |
+| 3 | Centang lalu hapus centang "Aktifkan fitur". | `ItemEvent`: kotak dicentang, lalu centang dihapus (`itemStateChanged`). |
+| 4 | Ganti pilihan dari Pagi menjadi Malam. | `ItemEvent`: memilih "Malam". Karena ada pemeriksaan `ItemEvent.SELECTED`, hanya pilihan baru yang tercatat, bukan pilihan lama yang dibatalkan. |
+| 5 | Klik isian, lalu ketik kata "abc". | `FocusEvent`: isian mendapat fokus (`focusGained`); lalu `KeyEvent`: huruf `a`, `b`, dan `c` diketik (`keyTyped`, tiga baris). |
+| 6 | Klik tombol setelah mengetik di isian. | `MouseEvent` kursor masuk ke tombol, `FocusEvent`: isian kehilangan fokus (`focusLost`), lalu `ActionEvent`: tombol diklik. |
+
+------------------------------------------------------------------------
+
+## 3. Jawaban Eksperimen Praktikum 3: Konversi Suhu
+
+### Eksperimen 1
+
+**Pertanyaan:** Hapus pemeriksaan if (evt.getStateChange() == ItemEvent.SELECTED) dan tambahkan
+System.out.println("item berubah"); di dalam event handler. Berapa kali pesan tercetak setiap
+pilihan diganti?
+
+**Jawaban:** Pesan tercetak **dua kali** setiap pilihan diganti.
+`itemStateChanged` dipanggil untuk pilihan lama yang berstatus
+`DESELECTED` dan pilihan baru yang berstatus `SELECTED`. Pemeriksaan
+`ItemEvent.SELECTED` membatasi aksi agar dijalankan hanya untuk pilihan
+baru.
+
+### Eksperimen 2
+
+**Pertanyaan:** Di jendela Properties bagian Events, kosongkan event keyReleased pada celsiusField, lalu buat event
+keyPressed yang memanggil konversi(). Mengapa hasil yang tampil terlambat satu karakter?
+
+**Jawaban:** `keyPressed` terjadi ketika tombol baru ditekan, sebelum
+karakter tersebut masuk ke teks pada field. Karena itu, saat
+`konversi()` memanggil `getText()`, teks yang terbaca masih teks sebelum
+karakter terbaru. `keyReleased` terjadi setelah tombol dilepas, ketika
+isi field sudah diperbarui.
+
+### Eksperimen 3
+
+**Pertanyaan:** Hapus blok try dan catch di method konversi, lalu ketik huruf pada isian. Apa yang muncul di jendela
+Output?
+
+**Jawaban:** Muncul pesan `Exception in thread "AWT-EventQueue-0"
+java.lang.NumberFormatException: For input string: "..."` beserta stack
+trace di jendela Output, karena `Double.parseDouble()` tidak dapat
+mengubah huruf menjadi angka. Aplikasi tidak langsung tertutup, tetapi
+hasil tidak diperbarui dan pengguna tidak mendapat umpan balik. Blok
+`try-catch` mengubah kesalahan itu menjadi pesan "Masukkan angka yang
+valid".
+
+------------------------------------------------------------------------
+
+## 4. Jawaban Eksperimen Praktikum 4: Kalkulator Sederhana
+
+### Eksperimen 1
+
+**Pertanyaan:** Buat event actionPerformed untuk kaliButton melalui Events tanpa menghapus lambda di konstruktor, lalu
+tambahkan System.out.println("kali"); di kedua tempat. Berapa kali pesan tercetak? Mengapa satu
+tombol sebaiknya hanya memakai satu cara?
+
+**Jawaban:** Pesan tercetak **dua kali** saat tombol diklik karena ada
+dua listener yang menjalankan aksi yang sama: listener dari GUI Builder
+dan lambda di konstruktor. Satu tombol sebaiknya hanya menggunakan satu
+cara untuk mencegah aksi ganda, hasil ganda, atau efek samping yang
+tidak diinginkan.
+
+### Eksperimen 2
+
+**Pertanyaan:** Tambahkan tombol % untuk sisa bagi (modulus). Apa saja yang diubah di tab Design dan di tab Source?
+
+**Jawaban:**
+
+- **Design:** Ubah `operatorPanel` dari Grid Layout 4 kolom menjadi 5
+  kolom, tambahkan Button bernama `modButton` dengan text `%`, lalu buat
+  event `actionPerformed` melalui Events.
+- **Source:** Isi `modButtonActionPerformed` dengan `hitung('%');`. Di
+  method `hitung`, tambahkan `case '%' -> a % b;` pada `switch`, dan
+  perluas pemeriksaan pembagi nol menjadi
+  `(operator == '/' || operator == '%') && b == 0`.
+
+### Eksperimen 3
+
+**Pertanyaan:** Tekan tombol Hapus. Mengapa kursor langsung berada di isian pertama?
+
+**Jawaban:** Karena method `hapus()` mengosongkan kedua field, mengatur
+label hasil menjadi "Hasil: 0", lalu memanggil
+`angka1Field.requestFocusInWindow()`. Pemanggilan tersebut meminta fokus
+keyboard kembali ke field angka pertama agar pengguna dapat langsung
+memasukkan angka baru.
+
+------------------------------------------------------------------------
+
+## 5. Pertanyaan Refleksi
+
+1. Jelaskan peran sumber event, object event, dan listener dengan contoh dari kode.
+
+   Jawaban: Sumber event adalah komponen tempat kejadian terjadi, misalnya `batalButton` yang diklik. Object event berisi informasi kejadian, yaitu `ActionEvent evt` pada `batalButtonActionPerformed(ActionEvent evt)`. Listener menjalankan tanggapan dan didaftarkan lewat `addActionListener()`, misalnya `batalButton.addActionListener(this::batalButtonActionPerformed)`.
+
+2. Mengapa KeyListener tidak dapat ditulis dengan lambda, dan bagaimana NetBeans mengatasinya?
+
+   Jawaban: Karena `KeyListener` memiliki tiga method abstrak (`keyPressed`, `keyReleased`, `keyTyped`), sedangkan lambda hanya untuk interface dengan satu method. NetBeans menggunakan `KeyAdapter` agar cukup menulis method yang dipilih, seperti `keyReleased`.
+
+3. Apa keuntungan memisahkan KonverterSuhu dari form KonversiSuhu?
+
+   Jawaban: Logika konversi lebih mudah diuji, dipelihara, dan digunakan kembali karena terpisah dari tampilan. Form hanya membaca isian dan menampilkan hasil.
+
+4. Mengapa itemStateChanged perlu memeriksa ItemEvent.SELECTED?
+
+   Jawaban: Karena method itu dipanggil dua kali setiap pilihan diganti (pilihan lama `DESELECTED` dan pilihan baru `SELECTED`). Pemeriksaan membuat aksi hanya berjalan sekali, untuk pilihan baru.
+
+5. Kapan memakai event handler GUI Builder, lambda, atau method reference?
+
+   Jawaban: Event handler GUI Builder sebagai cara utama pada form (tercatat di file `.form`), lambda untuk aksi singkat di konstruktor, dan method reference untuk memanggil method yang sudah ditulis tersendiri, misalnya `this::hapus`. Satu tombol cukup memakai satu cara.
+
+------------------------------------------------------------------------
