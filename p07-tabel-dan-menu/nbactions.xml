@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <action><actionName>run</actionName><goals><goal>process-classes</goal><goal>org.codehaus.mojo:exec-maven-plugin:3.5.0:java</goal></goals><properties><exec.mainClass>id.ac.uniska.pbo2.p07.AplikasiKontak</exec.mainClass></properties></action>
+  <action><actionName>run.single.main</actionName><goals><goal>process-classes</goal><goal>org.codehaus.mojo:exec-maven-plugin:3.5.0:java</goal></goals><properties><exec.mainClass>${packageClassName}</exec.mainClass></properties></action>
+</actions>

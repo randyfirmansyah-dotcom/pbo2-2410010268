@@ -1,0 +1,45 @@
+PEMERIKSAAN OTOMATIS P07
+
+Kompilasi seluruh source asli: Eclipse Java compiler, Java 17, FlatLaf 3.5.4. Seluruh source juga berhasil dikompilasi dengan Eclipse compiler pada target bytecode Java 21. Target project yang dikirim tetap JDK 21 sesuai modul; build Maven dengan JDK 21 dan desktop NetBeans belum dijalankan di lingkungan ini.
+Untuk pengujian komponen headless, hanya wadah JFrame/JDialog diganti pada salinan verifikasi; source project yang dikirim tetap JFrame/JDialog asli. Hasil ini bukan bukti pengujian desktop NetBeans.
+
+LULUS: Kontak: pencarian ah memetakan Ahmad Fauzi ke model 2
+LULUS: Eksperimen 2: tanpa konversi dialog akan menyebut Budi Santoso
+LULUS: Kontak: ubah data memutakhirkan filter aktif
+LULUS: Kontak: hapus mengurangi model
+LULUS: Kontak: event insert/update/delete dipancarkan
+LULUS: Eksperimen 6: IllegalArgumentException Cannot set a null TableModel
+LULUS: Kontak: lima contoh sesuai modul
+LULUS: Kontak: Ubah/Hapus nonaktif tanpa pilihan
+LULUS: Kontak: pencarian tidak membedakan kapital
+LULUS: Kontak: metakarakter pencarian diperlakukan literal
+LULUS: Kontak: accelerator tambahItem
+LULUS: Kontak: accelerator ubahItem
+LULUS: Kontak: accelerator hapusItem
+LULUS: Dialog kontak: nama kosong ditolak
+LULUS: Dialog kontak: telepon salah ditolak
+LULUS: Dialog kontak: data valid dan email opsional diterima
+LULUS: Buku: hitung status tersedia
+LULUS: Buku: tahun diurutkan secara numerik
+LULUS: Buku: ubah setelah sort mengenai buku yang tepat dan status diperbarui
+LULUS: Buku: hapus setelah sort mengenai buku yang tepat
+LULUS: Buku: event insert/update/delete dipancarkan
+LULUS: Buku: deteksi kode duplikat mengabaikan record yang diedit
+LULUS: Katalog: lima contoh buku
+LULUS: Katalog: label jumlah tersedia
+LULUS: Katalog: cari B001
+LULUS: Katalog: cari Andrea
+LULUS: Katalog: cari Laskar
+LULUS: Dialog buku: tahun 1899 ditolak
+LULUS: Dialog buku: tahun 2027 ditolak
+LULUS: Dialog buku: kode kosong ditolak
+LULUS: Dialog buku: judul kosong ditolak
+LULUS: Dialog buku: tahun nonangka ditolak
+LULUS: Dialog buku: batas tahun 1900 diterima
+LULUS: Dialog buku: batas tahun 2026 diterima
+LULUS: Dialog buku: nilai awal saat ubah dipulihkan
+LULUS: Layout komponen AplikasiKontak terbentuk
+LULUS: Layout komponen KatalogBuku terbentuk
+LULUS: Layout komponen DialogKontak terbentuk
+LULUS: Layout komponen DialogBuku terbentuk
+TOTAL 39 pemeriksaan lulus.
