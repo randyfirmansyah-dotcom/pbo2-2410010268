@@ -1,6 +1,6 @@
 # P07 - Tabel dan Menu
 
-Fahrizal Pratama - 2410010545  
+Muhammad Randy Firmansyah - 2410010268  
 Kelas 5B
 
 ## Jawaban eksperimen Praktikum 5
